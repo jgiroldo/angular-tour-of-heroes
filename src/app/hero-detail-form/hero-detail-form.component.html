@@ -1,0 +1,52 @@
+<div class="container-fluid" style="margin-top:35px; margin-bottom:60px">
+  <form *ngIf="heroForm" [formGroup]="heroForm" novalidate>
+    <div class="row">
+      <div class="col-3">
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="name" [(ngModel)]="heroVm.name" required>
+          <mat-error *ngIf="heroForm.controls.name.hasError('required')">
+              Obrigatorio
+            </mat-error>
+            <mat-error *ngIf="heroForm.controls.name.hasError('email') && !heroForm.controls.name.hasError('required')">
+                Email Obrigatorio
+              </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <input matInput placeholder="Age" formControlName="age" [(ngModel)]="heroVm.age">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <input matInput placeholder="Cpf" formControlName="cpf" [(ngModel)]="heroVm.cpf">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <input matInput placeholder="Nacionalidade" formControlName="nationality" [(ngModel)]="heroVm.nationality">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-slide-toggle [ngModelOptions]="{standalone: true}" [(ngModel)]="heroVm.hasSpecialPower" (change)="changeHasPower()" >
+          Poder Especial
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div *ngIf="heroVm.hasSpecialPower" class="row" style="margin-top:25px">
+      <div class="col-4">
+        <mat-form-field>
+          <input matInput placeholder="Poder especial" formControlName="specialPower" [(ngModel)]="heroVm.specialPower">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" style="margin-top:30px">
+      <div class="col-12">
+        {{heroForm.valid}}
+          <button id="btnSave" type="button" mat-raised-button (click)="save()" [disabled]="!heroForm.valid">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
