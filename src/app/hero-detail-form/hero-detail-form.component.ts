@@ -46,11 +46,12 @@ export class HeroDetailFormComponent implements OnInit {
 
   buildForm() {
     this.heroForm = this.fb.group({
-      name: [this.heroVm.name, Validators.compose([Validators.email,Validators.required]) ],
+      name: [this.heroVm.name, Validators.required],
       age: [this.heroVm.age, Validators.required],
       cpf: [this.heroVm.cpf, Validators.compose([Validators.required, this.validateCPF])],
       nationality: [this.heroVm.nationality, Validators.required],
-      specialPower: [this.heroVm.specialPower],
+      specialPower: [this.heroVm.specialPower, Validators.required],
+      email: [this.heroVm.email, Validators.compose([Validators.email, Validators.required]) ],
     });
   }
 

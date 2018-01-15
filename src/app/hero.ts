@@ -6,6 +6,7 @@ export class Hero {
   nationality: string;
   hasSpecialPower: boolean;
   specialPower: string;
+  email: string;
 
   constructor(hero: any) {
     this.id = hero.id;
@@ -15,5 +16,6 @@ export class Hero {
     this.nationality = hero.nationality;
     this.hasSpecialPower = hero.hasSpecialPower;
     this.specialPower = hero.specialPower;
+    this.email = hero.email;
   }
 }

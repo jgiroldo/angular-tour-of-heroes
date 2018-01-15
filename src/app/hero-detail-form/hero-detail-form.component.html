@@ -5,11 +5,8 @@
         <mat-form-field>
           <input matInput placeholder="Name" formControlName="name" [(ngModel)]="heroVm.name" required>
           <mat-error *ngIf="heroForm.controls.name.hasError('required')">
-              Obrigatorio
-            </mat-error>
-            <mat-error *ngIf="heroForm.controls.name.hasError('email') && !heroForm.controls.name.hasError('required')">
-                Email Obrigatorio
-              </mat-error>
+            Obrigatorio
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-3">
@@ -29,8 +26,21 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-12">
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email" [(ngModel)]="heroVm.email" required>
+          <mat-error *ngIf="heroForm.controls.email.hasError('required')">
+            Obrigatorio
+          </mat-error>
+          <mat-error *ngIf="heroForm.controls.email.hasError('email') && !heroForm.controls.email.hasError('required')">
+            Email Obrigatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-4">
-        <mat-slide-toggle [ngModelOptions]="{standalone: true}" [(ngModel)]="heroVm.hasSpecialPower" (change)="changeHasPower()" >
+        <mat-slide-toggle [ngModelOptions]="{standalone: true}" [(ngModel)]="heroVm.hasSpecialPower" (change)="changeHasPower()">
           Poder Especial
         </mat-slide-toggle>
       </div>
@@ -44,8 +54,8 @@
     </div>
     <div class="row" style="margin-top:30px">
       <div class="col-12">
-        {{heroForm.valid}}
-          <button id="btnSave" type="button" mat-raised-button (click)="save()" [disabled]="!heroForm.valid">Salvar</button>
+        <button id="btnCancel" type="button" mat-raised-button (click)="goBack()">Voltar</button>
+        <button id="btnSave" type="button" mat-raised-button (click)="save()" [disabled]="!heroForm.valid">Salvar</button>
       </div>
     </div>
   </form>
